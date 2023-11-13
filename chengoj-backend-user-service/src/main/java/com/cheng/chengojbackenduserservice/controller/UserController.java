@@ -1,24 +1,10 @@
 package com.cheng.chengojbackenduserservice.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cheng.chengoj.annotation.AuthCheck;
-import com.cheng.chengoj.common.BaseResponse;
-import com.cheng.chengoj.common.DeleteRequest;
-import com.cheng.chengoj.common.ErrorCode;
-import com.cheng.chengoj.common.ResultUtils;
-import com.cheng.chengoj.config.WxOpenConfig;
-import com.cheng.chengoj.constant.UserConstant;
-import com.cheng.chengoj.exception.BusinessException;
-import com.cheng.chengoj.exception.ThrowUtils;
-import com.cheng.chengoj.model.dto.user.*;
-import com.cheng.chengoj.model.entity.User;
-import com.cheng.chengoj.model.vo.LoginUserVO;
-import com.cheng.chengoj.model.vo.UserVO;
-import com.cheng.chengoj.service.UserService;
+
+import com.cheng.chengojbackenduserservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
-import me.chanjar.weixin.common.bean.oauth2.WxOAuth2AccessToken;
-import me.chanjar.weixin.mp.api.WxMpService;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
@@ -39,9 +25,6 @@ public class UserController {
 
     @Resource
     private UserService userService;
-
-    @Resource
-    private WxOpenConfig wxOpenConfig;
 
     // region 登录相关
 

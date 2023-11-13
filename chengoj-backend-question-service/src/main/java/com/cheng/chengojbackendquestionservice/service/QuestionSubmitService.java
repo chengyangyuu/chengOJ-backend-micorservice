@@ -1,13 +1,8 @@
-package com.cheng.chengojbackenduserservice.service;
+package com.cheng.chengojbackendquestionservice.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.cheng.chengoj.model.dto.questionSubmit.QuestionSubmitAddRequest;
-import com.cheng.chengoj.model.dto.questionSubmit.QuestionSubmitQueryRequest;
-import com.cheng.chengoj.model.entity.QuestionSubmit;
-import com.cheng.chengoj.model.entity.User;
-import com.cheng.chengoj.model.vo.QuestionSubmitVO;
+
+
+
 
 /**
  *

@@ -1,25 +1,9 @@
-package com.cheng.chengojbackenduserservice.service.impl;
+package com.cheng.chengojbackendquestionservice.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cheng.chengoj.common.ErrorCode;
-import com.cheng.chengoj.constant.CommonConstant;
-import com.cheng.chengoj.exception.BusinessException;
-import com.cheng.chengoj.judge.JudgeService;
-import com.cheng.chengoj.mapper.QuestionSubmitMapper;
-import com.cheng.chengoj.model.dto.questionSubmit.QuestionSubmitAddRequest;
-import com.cheng.chengoj.model.dto.questionSubmit.QuestionSubmitQueryRequest;
-import com.cheng.chengoj.model.entity.Question;
-import com.cheng.chengoj.model.entity.QuestionSubmit;
-import com.cheng.chengoj.model.entity.User;
-import com.cheng.chengoj.model.enums.QuestionSubmitLanguageEnum;
-import com.cheng.chengoj.model.enums.QuestionSubmitStatusEnum;
-import com.cheng.chengoj.model.vo.QuestionSubmitVO;
-import com.cheng.chengoj.service.QuestionService;
-import com.cheng.chengoj.service.QuestionSubmitService;
-import com.cheng.chengoj.service.UserService;
-import com.cheng.chengoj.utils.SqlUtils;
+
+
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;

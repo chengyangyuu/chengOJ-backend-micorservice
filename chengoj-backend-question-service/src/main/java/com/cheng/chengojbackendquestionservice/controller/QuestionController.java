@@ -1,25 +1,7 @@
-package com.cheng.chengojbackenduserservice.controller;
+package com.cheng.chengojbackendquestionservice.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cheng.chengoj.annotation.AuthCheck;
-import com.cheng.chengoj.common.BaseResponse;
-import com.cheng.chengoj.common.DeleteRequest;
-import com.cheng.chengoj.common.ErrorCode;
-import com.cheng.chengoj.common.ResultUtils;
-import com.cheng.chengoj.constant.UserConstant;
-import com.cheng.chengoj.exception.BusinessException;
-import com.cheng.chengoj.exception.ThrowUtils;
-import com.cheng.chengoj.model.dto.question.*;
-import com.cheng.chengoj.model.dto.questionSubmit.QuestionSubmitAddRequest;
-import com.cheng.chengoj.model.dto.questionSubmit.QuestionSubmitQueryRequest;
-import com.cheng.chengoj.model.entity.Question;
-import com.cheng.chengoj.model.entity.QuestionSubmit;
-import com.cheng.chengoj.model.entity.User;
-import com.cheng.chengoj.model.vo.QuestionSubmitVO;
-import com.cheng.chengoj.model.vo.QuestionVO;
-import com.cheng.chengoj.service.QuestionService;
-import com.cheng.chengoj.service.QuestionSubmitService;
-import com.cheng.chengoj.service.UserService;
+
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;

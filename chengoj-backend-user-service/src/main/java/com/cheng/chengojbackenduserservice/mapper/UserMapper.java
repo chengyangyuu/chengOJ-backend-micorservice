@@ -1,7 +1,6 @@
 package com.cheng.chengojbackenduserservice.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cheng.chengoj.model.entity.User;
+
 
 /**
  * 用户数据库操作
