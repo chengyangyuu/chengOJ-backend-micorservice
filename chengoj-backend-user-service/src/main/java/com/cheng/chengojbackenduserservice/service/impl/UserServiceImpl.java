@@ -1,22 +1,22 @@
 package com.cheng.chengojbackenduserservice.service.impl;
 
+
+import com.alibaba.nacos.common.utils.CollectionUtils;
+import com.alibaba.nacos.common.utils.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cheng.chengoj.common.ErrorCode;
-import com.cheng.chengoj.constant.CommonConstant;
-import com.cheng.chengoj.exception.BusinessException;
-import com.cheng.chengoj.mapper.UserMapper;
-import com.cheng.chengoj.model.dto.user.UserQueryRequest;
-import com.cheng.chengoj.model.entity.User;
-import com.cheng.chengoj.model.enums.UserRoleEnum;
-import com.cheng.chengoj.model.vo.LoginUserVO;
-import com.cheng.chengoj.model.vo.UserVO;
-import com.cheng.chengoj.service.UserService;
-import com.cheng.chengoj.utils.SqlUtils;
+import com.cheng.chengojbackendcommon.common.ErrorCode;
+import com.cheng.chengojbackendcommon.constant.CommonConstant;
+import com.cheng.chengojbackendcommon.exception.BusinessException;
+import com.cheng.chengojbackendcommon.utils.SqlUtils;
+import com.cheng.chengojbackendmodel.dto.user.UserQueryRequest;
+import com.cheng.chengojbackendmodel.entity.User;
+import com.cheng.chengojbackendmodel.enums.UserRoleEnum;
+import com.cheng.chengojbackendmodel.vo.LoginUserVO;
+import com.cheng.chengojbackendmodel.vo.UserVO;
+import com.cheng.chengojbackenduserservice.mapper.UserMapper;
+import com.cheng.chengojbackenduserservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.cheng.chengoj.constant.UserConstant.USER_LOGIN_STATE;
+import static com.cheng.chengojbackendcommon.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
  * 用户服务实现
@@ -108,38 +108,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         // 3. 记录用户的登录态
         request.getSession().setAttribute(USER_LOGIN_STATE, user);
         return this.getLoginUserVO(user);
-    }
-
-    @Override
-    public LoginUserVO userLoginByMpOpen(WxOAuth2UserInfo wxOAuth2UserInfo, HttpServletRequest request) {
-        String unionId = wxOAuth2UserInfo.getUnionId();
-        String mpOpenId = wxOAuth2UserInfo.getOpenid();
-        // 单机锁
-        synchronized (unionId.intern()) {
-            // 查询用户是否已存在
-            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("unionId", unionId);
-            User user = this.getOne(queryWrapper);
-            // 被封号，禁止登录
-            if (user != null && UserRoleEnum.BAN.getValue().equals(user.getUserRole())) {
-                throw new BusinessException(ErrorCode.FORBIDDEN_ERROR, "该用户已被封，禁止登录");
-            }
-            // 用户不存在则创建
-            if (user == null) {
-                user = new User();
-                user.setUnionId(unionId);
-                user.setMpOpenId(mpOpenId);
-                user.setUserAvatar(wxOAuth2UserInfo.getHeadImgUrl());
-                user.setUserName(wxOAuth2UserInfo.getNickname());
-                boolean result = this.save(user);
-                if (!result) {
-                    throw new BusinessException(ErrorCode.SYSTEM_ERROR, "登录失败");
-                }
-            }
-            // 记录用户的登录态
-            request.getSession().setAttribute(USER_LOGIN_STATE, user);
-            return getLoginUserVO(user);
-        }
     }
 
     /**

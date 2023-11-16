@@ -2,6 +2,18 @@ package com.cheng.chengojbackenduserservice.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
+import com.cheng.chengojbackendcommon.annotation.AuthCheck;
+import com.cheng.chengojbackendcommon.common.BaseResponse;
+import com.cheng.chengojbackendcommon.common.DeleteRequest;
+import com.cheng.chengojbackendcommon.common.ErrorCode;
+import com.cheng.chengojbackendcommon.common.ResultUtils;
+import com.cheng.chengojbackendcommon.constant.UserConstant;
+import com.cheng.chengojbackendcommon.exception.BusinessException;
+import com.cheng.chengojbackendcommon.exception.ThrowUtils;
+import com.cheng.chengojbackendmodel.dto.user.*;
+import com.cheng.chengojbackendmodel.entity.User;
+import com.cheng.chengojbackendmodel.vo.LoginUserVO;
+import com.cheng.chengojbackendmodel.vo.UserVO;
 import com.cheng.chengojbackenduserservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -70,28 +82,6 @@ public class UserController {
         return ResultUtils.success(loginUserVO);
     }
 
-    /**
-     * 用户登录（微信开放平台）
-     */
-    @GetMapping("/login/wx_open")
-    public BaseResponse<LoginUserVO> userLoginByWxOpen(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("code") String code) {
-        WxOAuth2AccessToken accessToken;
-        try {
-            WxMpService wxService = wxOpenConfig.getWxMpService();
-            accessToken = wxService.getOAuth2Service().getAccessToken(code);
-            WxOAuth2UserInfo userInfo = wxService.getOAuth2Service().getUserInfo(accessToken, code);
-            String unionId = userInfo.getUnionId();
-            String mpOpenId = userInfo.getOpenid();
-            if (StringUtils.isAnyBlank(unionId, mpOpenId)) {
-                throw new BusinessException(ErrorCode.SYSTEM_ERROR, "登录失败，系统错误");
-            }
-            return ResultUtils.success(userService.userLoginByMpOpen(userInfo, request));
-        } catch (Exception e) {
-            log.error("userLoginByWxOpen error", e);
-            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "登录失败，系统错误");
-        }
-    }
 
     /**
      * 用户注销

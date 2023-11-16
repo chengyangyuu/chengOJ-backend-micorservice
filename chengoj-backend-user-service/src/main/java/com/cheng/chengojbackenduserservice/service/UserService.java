@@ -1,6 +1,11 @@
 package com.cheng.chengojbackenduserservice.service;
 
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.cheng.chengojbackendmodel.dto.user.UserQueryRequest;
+import com.cheng.chengojbackendmodel.entity.User;
+import com.cheng.chengojbackendmodel.vo.LoginUserVO;
+import com.cheng.chengojbackendmodel.vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
