@@ -3,11 +3,12 @@ package com.cheng.chengojbackendjudgeservice.judge.codesandbox.impl;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.excel.util.StringUtils;
-import com.cheng.chengoj.common.ErrorCode;
-import com.cheng.chengoj.exception.BusinessException;
-import com.cheng.chengoj.judge.codesandbox.CodeSandBox;
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeResponse;
+import com.cheng.chengojbackendcommon.common.ErrorCode;
+import com.cheng.chengojbackendcommon.exception.BusinessException;
+import com.cheng.chengojbackendjudgeservice.judge.codesandbox.CodeSandBox;
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeRequest;
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeResponse;
+
 
 /**
  * 远程代码沙箱(实际调用接口的沙箱)

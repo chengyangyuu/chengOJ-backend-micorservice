@@ -1,21 +1,22 @@
 package com.cheng.chengojbackendjudgeservice.judge;
 
 import cn.hutool.json.JSONUtil;
-import com.cheng.chengoj.common.ErrorCode;
-import com.cheng.chengoj.exception.BusinessException;
-import com.cheng.chengoj.judge.codesandbox.CodeSandBox;
-import com.cheng.chengoj.judge.codesandbox.CodeSandboxFactory;
-import com.cheng.chengoj.judge.codesandbox.CodeSandboxProxy;
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeResponse;
-import com.cheng.chengoj.judge.codesandbox.model.JudgeInfo;
-import com.cheng.chengoj.judge.strategy.JudgeContext;
-import com.cheng.chengoj.model.dto.question.JudgeCase;
-import com.cheng.chengoj.model.entity.Question;
-import com.cheng.chengoj.model.entity.QuestionSubmit;
-import com.cheng.chengoj.model.enums.QuestionSubmitStatusEnum;
-import com.cheng.chengoj.service.QuestionService;
-import com.cheng.chengoj.service.QuestionSubmitService;
+
+import com.cheng.chengojbackendcommon.common.ErrorCode;
+import com.cheng.chengojbackendcommon.exception.BusinessException;
+import com.cheng.chengojbackendjudgeservice.judge.codesandbox.CodeSandBox;
+import com.cheng.chengojbackendjudgeservice.judge.codesandbox.CodeSandboxFactory;
+import com.cheng.chengojbackendjudgeservice.judge.codesandbox.CodeSandboxProxy;
+import com.cheng.chengojbackendjudgeservice.judge.strategy.JudgeContext;
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeRequest;
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeResponse;
+import com.cheng.chengojbackendmodel.codesandbox.JudgeInfo;
+import com.cheng.chengojbackendmodel.dto.question.JudgeCase;
+import com.cheng.chengojbackendmodel.entity.Question;
+import com.cheng.chengojbackendmodel.entity.QuestionSubmit;
+import com.cheng.chengojbackendmodel.enums.QuestionSubmitStatusEnum;
+import com.cheng.chengojbackendserviceclient.service.QuestionService;
+import com.cheng.chengojbackendserviceclient.service.QuestionSubmitService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -88,7 +89,6 @@ public class JudgeServiceImpl implements JudgeService {
                 .language(language)
                 .build();
         ExecuteCodeResponse executeCodeResponse = codeSandBox.executeCode(executeCodeRequest);
-
         //更改状态之前 判断执行的是否正确
         //1.数量：先判断输出数量是否和预期数量相同(校验组数 几组数据)
         List<String> outputList = executeCodeResponse.getOutputList();

@@ -1,11 +1,12 @@
 package com.cheng.chengojbackendjudgeservice.judge.codesandbox.impl;
 
-import com.cheng.chengoj.judge.codesandbox.CodeSandBox;
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeResponse;
-import com.cheng.chengoj.judge.codesandbox.model.JudgeInfo;
-import com.cheng.chengoj.model.enums.JudgeInfoMessageEnum;
-import com.cheng.chengoj.model.enums.QuestionSubmitStatusEnum;
+
+import com.cheng.chengojbackendjudgeservice.judge.codesandbox.CodeSandBox;
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeRequest;
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeResponse;
+import com.cheng.chengojbackendmodel.codesandbox.JudgeInfo;
+import com.cheng.chengojbackendmodel.enums.JudgeInfoMessageEnum;
+import com.cheng.chengojbackendmodel.enums.QuestionSubmitStatusEnum;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;

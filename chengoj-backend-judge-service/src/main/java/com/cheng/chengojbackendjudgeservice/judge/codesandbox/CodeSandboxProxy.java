@@ -1,7 +1,8 @@
 package com.cheng.chengojbackendjudgeservice.judge.codesandbox;
 
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeResponse;
+
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeRequest;
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

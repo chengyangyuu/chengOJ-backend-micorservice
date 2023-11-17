@@ -1,8 +1,9 @@
 package com.cheng.chengojbackendjudgeservice.judge.codesandbox;
 
-import com.cheng.chengoj.judge.codesandbox.impl.ExampleCodeSandBox;
-import com.cheng.chengoj.judge.codesandbox.impl.RemoteCodeSandBox;
-import com.cheng.chengoj.judge.codesandbox.impl.ThirdPartyCodeSandBox;
+
+import com.cheng.chengojbackendjudgeservice.judge.codesandbox.impl.ExampleCodeSandBox;
+import com.cheng.chengojbackendjudgeservice.judge.codesandbox.impl.RemoteCodeSandBox;
+import com.cheng.chengojbackendjudgeservice.judge.codesandbox.impl.ThirdPartyCodeSandBox;
 
 /**
  * 代码沙箱 根据参数来 选择沙箱

@@ -1,7 +1,7 @@
 package com.cheng.chengojbackendjudgeservice.judge;
 
-import com.cheng.chengoj.model.entity.QuestionSubmit;
 
+import com.cheng.chengojbackendmodel.entity.QuestionSubmit;
 
 public interface JudgeService {
     /**

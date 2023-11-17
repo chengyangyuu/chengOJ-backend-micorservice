@@ -1,11 +1,12 @@
 package com.cheng.chengojbackendjudgeservice.judge.strategy;
 
 import cn.hutool.json.JSONUtil;
-import com.cheng.chengoj.judge.codesandbox.model.JudgeInfo;
-import com.cheng.chengoj.model.dto.question.JudgeCase;
-import com.cheng.chengoj.model.dto.question.JudgeConfig;
-import com.cheng.chengoj.model.entity.Question;
-import com.cheng.chengoj.model.enums.JudgeInfoMessageEnum;
+import com.cheng.chengojbackendmodel.codesandbox.JudgeInfo;
+import com.cheng.chengojbackendmodel.dto.question.JudgeCase;
+import com.cheng.chengojbackendmodel.dto.question.JudgeConfig;
+import com.cheng.chengojbackendmodel.entity.Question;
+import com.cheng.chengojbackendmodel.enums.JudgeInfoMessageEnum;
+
 
 import java.util.List;
 import java.util.Optional;

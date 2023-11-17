@@ -1,8 +1,9 @@
 package com.cheng.chengojbackendjudgeservice.judge.codesandbox.impl;
 
-import com.cheng.chengoj.judge.codesandbox.CodeSandBox;
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.cheng.chengoj.judge.codesandbox.model.ExecuteCodeResponse;
+
+import com.cheng.chengojbackendjudgeservice.judge.codesandbox.CodeSandBox;
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeRequest;
+import com.cheng.chengojbackendmodel.codesandbox.ExecuteCodeResponse;
 
 /**
  * 第三方代码沙箱(调用网上别人现成的沙箱)

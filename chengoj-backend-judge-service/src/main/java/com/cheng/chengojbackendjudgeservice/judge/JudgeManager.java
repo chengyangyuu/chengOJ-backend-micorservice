@@ -1,11 +1,12 @@
 package com.cheng.chengojbackendjudgeservice.judge;
 
-import com.cheng.chengoj.judge.codesandbox.model.JudgeInfo;
-import com.cheng.chengoj.judge.strategy.DefaultJudgeStrategy;
-import com.cheng.chengoj.judge.strategy.JavaLanguageJudgeStrategy;
-import com.cheng.chengoj.judge.strategy.JudgeContext;
-import com.cheng.chengoj.judge.strategy.JudgeStrategy;
-import com.cheng.chengoj.model.entity.QuestionSubmit;
+
+import com.cheng.chengojbackendjudgeservice.judge.strategy.DefaultJudgeStrategy;
+import com.cheng.chengojbackendjudgeservice.judge.strategy.JavaLanguageJudgeStrategy;
+import com.cheng.chengojbackendjudgeservice.judge.strategy.JudgeContext;
+import com.cheng.chengojbackendjudgeservice.judge.strategy.JudgeStrategy;
+import com.cheng.chengojbackendmodel.codesandbox.JudgeInfo;
+import com.cheng.chengojbackendmodel.entity.QuestionSubmit;
 import org.springframework.stereotype.Service;
 
 /**

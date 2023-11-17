@@ -1,6 +1,7 @@
 package com.cheng.chengojbackendjudgeservice.judge.strategy;
 
-import com.cheng.chengoj.judge.codesandbox.model.JudgeInfo;
+
+import com.cheng.chengojbackendmodel.codesandbox.JudgeInfo;
 
 /**
  * 判题策略

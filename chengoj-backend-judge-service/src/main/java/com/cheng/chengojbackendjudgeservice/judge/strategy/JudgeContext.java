@@ -1,9 +1,10 @@
 package com.cheng.chengojbackendjudgeservice.judge.strategy;
 
-import com.cheng.chengoj.judge.codesandbox.model.JudgeInfo;
-import com.cheng.chengoj.model.dto.question.JudgeCase;
-import com.cheng.chengoj.model.entity.Question;
-import com.cheng.chengoj.model.entity.QuestionSubmit;
+
+import com.cheng.chengojbackendmodel.codesandbox.JudgeInfo;
+import com.cheng.chengojbackendmodel.dto.question.JudgeCase;
+import com.cheng.chengojbackendmodel.entity.Question;
+import com.cheng.chengojbackendmodel.entity.QuestionSubmit;
 import lombok.Data;
 
 import java.util.List;
