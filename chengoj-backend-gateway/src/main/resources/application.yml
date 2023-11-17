@@ -1,0 +1,25 @@
+#Nacos
+spring:
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        - id: chengoj-backend-user-service
+          uri: lb://chengoj-backend-user-service
+          predicates:
+            - Path=/api/user/**
+        - id: chengoj-backend-judge-service
+          uri: lb://chengoj-backend-judge-service
+          predicates:
+            - Path=/api/judge/**
+        - id: chengoj-backend-question-service
+          uri: lb://chengoj-backend-question-service
+          predicates:
+            - Path=/api/question/**
+  application:
+    name: chengoj-backend-gateway
+  main:
+    web-application-type: reactive
+server:
+  port: 8105
