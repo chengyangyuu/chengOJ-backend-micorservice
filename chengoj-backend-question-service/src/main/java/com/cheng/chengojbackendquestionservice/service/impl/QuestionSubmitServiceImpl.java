@@ -20,8 +20,8 @@ import com.cheng.chengojbackendmodel.vo.QuestionSubmitVO;
 import com.cheng.chengojbackendquestionservice.mapper.QuestionSubmitMapper;
 import com.cheng.chengojbackendquestionservice.service.QuestionService;
 import com.cheng.chengojbackendquestionservice.service.QuestionSubmitService;
-import com.cheng.chengojbackendserviceclient.service.JudgeService;
-import com.cheng.chengojbackendserviceclient.service.UserService;
+import com.cheng.chengojbackendserviceclient.service.JudgeFeignClient;
+import com.cheng.chengojbackendserviceclient.service.UserFeignClient;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -44,11 +44,11 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
     private QuestionService questionService;
 
     @Resource
-    private UserService userService;
+    private UserFeignClient userFeignClient;
 
     @Resource
     @Lazy
-    private JudgeService judgeService;
+    private JudgeFeignClient judgeFeignClient;
 
     /**
      * 提交题目
@@ -88,7 +88,7 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
         Long questionSubmitId = questionSubmit.getId();
         //执行判题服务  这里最好用异步 因为判题服务很慢的
         CompletableFuture.runAsync(() -> {
-            judgeService.doJudge(questionSubmitId);
+            judgeFeignClient.doJudge(questionSubmitId);
         });
 
         return questionSubmitId;
@@ -136,7 +136,7 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
         //VO 脱敏 仅本人和管理员能看见 (提交 userId和登录用户 Id的不同)提交代码的答案,提交代码
         //查的不是自己信息 或者不是管理员 不让查
         Long userId = loginUser.getId();
-        if (userId != questionSubmit.getUserId() && userService.isAdmin(loginUser)) {
+        if (userId != questionSubmit.getUserId() && userFeignClient.isAdmin(loginUser)) {
             questionSubmitVO.setCode(null);
         }
         return questionSubmitVO;
