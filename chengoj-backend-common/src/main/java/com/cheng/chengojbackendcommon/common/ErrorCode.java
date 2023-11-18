@@ -7,6 +7,7 @@ public enum ErrorCode {
 
     SUCCESS(0, "ok"),
     PARAMS_ERROR(40000, "请求参数错误"),
+    NULL_ERROR(40001, "请求数据为空"),
     NOT_LOGIN_ERROR(40100, "未登录"),
     NO_AUTH_ERROR(40101, "无权限"),
     NOT_FOUND_ERROR(40400, "请求数据不存在"),
@@ -15,6 +16,7 @@ public enum ErrorCode {
     OPERATION_ERROR(50001, "操作失败"),
 
     API_REQUEST_ERROR(50010, "接口调用错误");
+
 
     /**
      * 状态码

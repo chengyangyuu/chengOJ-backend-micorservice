@@ -18,6 +18,7 @@ import com.cheng.chengojbackendmodel.enums.QuestionSubmitLanguageEnum;
 import com.cheng.chengojbackendmodel.enums.QuestionSubmitStatusEnum;
 import com.cheng.chengojbackendmodel.vo.QuestionSubmitVO;
 import com.cheng.chengojbackendquestionservice.mapper.QuestionSubmitMapper;
+import com.cheng.chengojbackendquestionservice.mq.CodeMqProducer;
 import com.cheng.chengojbackendquestionservice.service.QuestionService;
 import com.cheng.chengojbackendquestionservice.service.QuestionSubmitService;
 import com.cheng.chengojbackendserviceclient.service.JudgeFeignClient;
@@ -32,6 +33,9 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
+
+import static com.cheng.chengojbackendcommon.constant.MqConstant.CODE_EXCHANGE_NAME;
+import static com.cheng.chengojbackendcommon.constant.MqConstant.CODE_ROUTING_KEY;
 
 /**
  *
@@ -50,6 +54,8 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
     @Lazy
     private JudgeFeignClient judgeFeignClient;
 
+    @Resource
+    private CodeMqProducer codeMqProducer;
     /**
      * 提交题目
      *
@@ -86,10 +92,12 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "数据插入失败");
         }
         Long questionSubmitId = questionSubmit.getId();
-        //执行判题服务  这里最好用异步 因为判题服务很慢的
-        CompletableFuture.runAsync(() -> {
-            judgeFeignClient.doJudge(questionSubmitId);
-        });
+
+        codeMqProducer.sendMessage(CODE_EXCHANGE_NAME, CODE_ROUTING_KEY, String.valueOf(questionSubmitId));
+//        //执行判题服务  这里最好用异步 因为判题服务很慢的
+//        CompletableFuture.runAsync(() -> {
+//            judgeFeignClient.doJudge(questionSubmitId);
+//        });
 
         return questionSubmitId;
     }

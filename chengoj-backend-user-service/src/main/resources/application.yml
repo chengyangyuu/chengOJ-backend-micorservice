@@ -51,10 +51,12 @@ server:
   port: 8102
   servlet:
     context-path: /api/user
+
     # cookie 30 天过期
     session:
       cookie:
         max-age: 2592000
+        path: /api
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
@@ -76,3 +78,6 @@ cos:
 #代码沙箱配置
 codeSandbox:
   type: remote
+# 开启knife4j接口文档
+knife4j:
+  enable: true

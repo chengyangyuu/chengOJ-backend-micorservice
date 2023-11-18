@@ -31,6 +31,12 @@ spring:
     port: 6379
     timeout: 5000
   #    password: 123456
+  #  rabbitmq 信息
+  rabbitmq:
+    host: localhost
+    password: guest
+    username: guest
+    port: 5672
   # Elasticsearch 配置
   # todo 需替换配置，然后取消注释
   #  elasticsearch:
@@ -55,6 +61,7 @@ server:
     session:
       cookie:
         max-age: 2592000
+        path: /api
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
@@ -76,3 +83,6 @@ cos:
 #代码沙箱配置
 codeSandbox:
   type: remote
+# 开启knife4j接口文档
+knife4j:
+  enable: true
