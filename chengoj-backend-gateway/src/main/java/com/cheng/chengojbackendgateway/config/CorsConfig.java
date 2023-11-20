@@ -21,7 +21,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedMethod("*");
         config.setAllowCredentials(true);
-        // 设置线上前端项目地址
+        // 设置线上前端项目地址JsonConfig
 //        config.setAllowedOriginPatterns(Arrays.asList("http://localhost:8080", "http://127.0.0.1:8080", "http://chengoj.icu", "http://xxxxx:80"));
         config.setAllowedOriginPatterns(Arrays.asList("*"));
         config.addAllowedHeader("*");
